@@ -1,0 +1,134 @@
+靖守彦 · Java/Go 架构师
+
+工作经验：18 年　　联系电话：18552805073
+电子邮箱：jingshouyan@gmail.com　　现居住地：江苏南京
+出生年月：1985 年 08 月　　教育背景：河海大学 · 本科 · 自动化（2003 届）
+GitHub：github.com/jingshouyan
+
+【专业摘要】
+
+18 年后端开发经验，专注于 Java/Go 分布式系统基础架构方向。主导自研了基于 Dubbo + Thrift 扩展的企业级 RPC 框架和 JDBC 增强工具包（均已开源），支撑千万级消息量的私有化部署 IM 系统。具备微服务治理、容器化迁移（裸机 → K8s）、DevOps 全链路搭建、国产数据库适配等落地经验。擅长基础组件设计与性能调优，有多个真实案例：消息服务重构后 QPS 从 100+ 提升至 1000+，慢查询治理后 p95 延时从 4000ms 降至 200ms。累计修复 CVE 安全漏洞 200+，熟悉安全治理流程与开源社区维护。积极探索 AI 编程实践，通过 Reasonix Code（DeepSeek）对话式开发完成完整小程序项目，验证了 AI 驱动开发的工程可行性。
+
+【核心技术栈】
+
+编程语言
+· Java / Kotlin（精通）：JVM 内存模型、GC 调优、多线程并发、NIO/Netty 网络编程
+· Go（熟练）：Goroutine/Channel 并发模型，Gin、gorm、zorm、viper 框架，Go Module 依赖管理
+
+框架与中间件
+· RPC：Dubbo、Thrift、自研 J-RPC 框架
+· 微服务：SpringCloud 全家桶、自研微服务框架
+· ORM：MyBatis-Plus、JPA、Spring JDBC Template
+· 网络：Netty、NIO 模型
+
+存储与搜索
+· MySQL：SQL 优化、B+ Tree 索引结构、慢查询治理（p95 4000ms → 200ms 实战）
+· 国产数据库：达梦、金仓、神通
+· Redis：缓存设计、分布式锁、缓存+数据同步技术（消息服务 QPS 100+ → 1000+）
+· ElasticSearch：分词、搜索、全文检索
+· Kafka：异步消息、削峰填谷、事件驱动
+
+DevOps & 容器化
+· Docker / Kubernetes，裸机 → K8s 迁移实战
+· GitLab CI + K8s Runner + Minio 缓存 + SonarQube + Harbor
+· GitLab CI 自动化构建、Arthas 线上排查
+
+治理与安全
+· Zookeeper（自研服务注册发现 & 配置中心）
+· CVE 安全漏洞修复 200+、依赖版本升级管理
+· Helm 部署、日志分析、监控系统
+
+AI 编程
+· 熟练使用 Reasonix Code（DeepSeek）对话式 AI 编程完成完整项目交付
+· 通过 AI 编程完成驾考小程序（driver-exam-wx）从零到上线的全流程开发
+· 关注 AI 辅助编程的效率边界与最佳实践
+
+【工作经历】
+
+北信源软件股份有限公司 · 基础服务组组长 / 架构师
+2015.12 — 2026.06 · 管理团队 10+ 人
+
+负责公司基础架构层的设计与维护，涵盖 IM 系统、微服务框架、RPC 框架、配置中心、CI/CD 流水线等。主导技术决策、性能优化和线上故障治理。
+
+核心项目：信源密信（企业级私有化部署 IM）
+分布式架构，支持高并发和大规模用户访问，提供即时通讯、消息群发、消息存储与检索、开放 API 等功能。
+
+架构设计与治理：
+· 将 IM 系统拆分为用户、登录、在线、群组、好友、ID、消息、云推送等 10+ 独立微服务，明确服务边界
+· 主导服务内聚合并与重构，服务数量减少 30%，调用链显著缩短，系统性能和稳定性大幅提升
+· 主导消息服务重构，引入缓存+数据同步技术，QPS 从 100+ 提升至 1000+（10 倍提升）
+· 主导服务部署模式从裸机迁移至 K8s，提升系统弹性伸缩能力与运维效率
+
+自研基础设施：
+· RPC 框架：基于 Thrift + Dubbo，统一公司服务间调用协议，支持 Spring Boot Starter 一键集成、Zipkin 调用链追踪、数据脱敏
+· 配置中心：自研基于 Zookeeper 的服务注册发现与配置中心，支持动态配置下发与三方组件接入
+· JDBC 增强工具：基于 Spring JDBC Template 自研 CRUD 增强框架（开源 J-JDBC），支持多数据库方言、字段加密存储
+
+DevOps & 工程效率：
+· 搭建 GitLab CI 全链路流水线：K8s Runner + Minio 缓存 + SonarQube 代码质量检查 + Harbor 镜像仓库
+· Java 第三方依赖管理，CVE 漏洞修复 200+，依赖版本升级，构建工具升级
+
+Go 工具链开发：
+· 用 Go 编写日志分析工具，处理海量服务日志，支持实时检索与告警
+· 开发 cve-analyzer（Go CLI），自动解析 OWASP 依赖检查报告并生成结构化摘要
+· 开发 nvd-data-mirror（Go 服务），为 dependency-check-maven 提供 CVE 数据国内镜像，解决 NVD 官方源访问慢的问题
+
+开放平台 & AI 集成：
+· 设计开放平台 API，支持第三方系统（OA、CRM 等）集成
+· 对接 AI 能力平台（Cli、OpenClaw 等），提升系统智能化水平
+
+线上调优实战：
+· 某核心服务慢查询治理，p95 延时从 4000ms 降低至 200ms
+· 消息服务重构（缓存+数据同步），QPS 从 100+ 提升至 1000+
+
+
+钱袋宝软件股份有限公司 · Java 研发工程师
+2014.05 — 2015.12
+
+核心项目：钱生钱小额贷款系统
+提供贷款申请、审批、放款、还款全流程服务。
+
+· 负责小额贷款系统的核心功能开发与性能优化
+· 对接多家银行接口，保障数据准确传输与处理
+· 设计并开发对账系统，确保系统数据准确性与一致性
+· 设计开发管理平台，支撑运营与风控团队日常工作
+
+
+淮海中联水泥有限公司 · 信息中心 IT 技术工程师
+2008.08 — 2014.05
+
+· 负责公司 ERP 系统维护，日常故障排查与处理
+· 内部需求分析：与业务部门沟通，梳理需求并推动供应商落地实现
+· IT 基础设施维护：管理公司网络、服务器、数据库等基础设施
+
+【个人开源项目】
+
+J-RPC — 基于 Thrift 的 JSON 格式 RPC 框架
+github.com/jingshouyan/j-rpc · 2018.08 — 2021.06
+
+轻量级 RPC 框架，通过 Zookeeper 做服务注册发现，支持连接池复用与按服务名/版本/实例路由。
+亮点：Spring Boot Starter 封装零配置接入、内置 Zipkin 调用链追踪与数据脱敏、根据线上服务自动生成 API 文档、支持 JMeter 接口压测。
+
+
+J-JDBC — Spring JDBC Template CRUD 增强工具包
+github.com/jingshouyan/j-jdbc · 2018.04 — 2021.04
+
+基于注解简化增删改查开发，支持动态 SQL 与分页查询、多数据库方言扩展（MySQL、达梦、金仓等）、字段加密存储。
+
+
+cve-analyzer — CVE 漏洞报告分析工具（Go）
+github.com/jingshouyan/cve-analyzer · 2021.05 — 2025.04
+
+Go 命令行工具，解析 OWASP 依赖检查报告的 CSV 漏洞报告，生成结构化摘要（CSV + Markdown）。支持用户自定义建议字段。
+
+
+nvd-data-mirror — NVD 数据镜像服务（Go）
+github.com/jingshouyan/nvd-data-mirror · 2021.04 — 2024.03
+
+为 dependency-check-maven 提供 CVE 和 RetireJS 数据的国内镜像服务，提升数据获取稳定性与速度。
+
+
+driver-exam-wx — 驾考科目一/科目四 微信小程序学习助手
+github.com/jingshouyan/driver-exam-wx · 2026.06
+
+驾考刷题学习小程序，涵盖顺序练习、随机练习、模拟考试、错题本等功能。全程通过 Reasonix Code（DeepSeek）对话式 AI 编程完成，零手工编码。
