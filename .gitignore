@@ -28,3 +28,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Resume ###
+*.pdf
+*.docx
