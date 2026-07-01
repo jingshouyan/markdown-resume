@@ -60,8 +60,8 @@ AI 编程
 · 主导服务部署模式从裸机迁移至 K8s，提升系统弹性伸缩能力与运维效率
 
 自研基础设施：
-· RPC 框架：基于 Thrift + Dubbo，统一公司服务间调用协议，支持 Spring Boot Starter 一键集成、Zipkin 调用链追踪、数据脱敏
-· 配置中心：自研基于 Zookeeper 的服务注册发现与配置中心，支持动态配置下发与三方组件接入
+· RPC 框架：基于 Dubbo + Thrift 扩展，统一服务间调用协议，Spring Boot Starter 集成、Zipkin 追踪、数据脱敏
+· 配置中心：基于 Zookeeper 的服务注册发现与配置中心，支持动态配置下发
 · JDBC 增强工具：基于 Spring JDBC Template 自研 CRUD 增强框架（开源 J-JDBC），支持多数据库方言、字段加密存储
 
 DevOps & 工程效率：
@@ -76,10 +76,6 @@ Go 工具链开发：
 开放平台 & AI 集成：
 · 设计开放平台 API，支持第三方系统（OA、CRM 等）集成
 · 对接 AI 能力平台（Cli、OpenClaw 等），提升系统智能化水平
-
-线上调优实战：
-· 某核心服务慢查询治理，p95 延时从 4000ms 降低至 200ms
-· 消息服务重构（缓存+数据同步），QPS 从 100+ 提升至 1000+
 
 
 钱袋宝软件股份有限公司 · Java 研发工程师
