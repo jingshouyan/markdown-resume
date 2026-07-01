@@ -1,7 +1,7 @@
 靖守彦 · Java/Go 架构师
 ========================
 
-18 年经验 · 18552805073 · jingshouyan@gmail.com · 江苏南京
+18 年经验 · 18552805073 · jingshouyan@gmail.com · 江苏徐州
 1985.08 · 河海大学 本科 自动化（2003 届）
 github.com/jingshouyan
 
