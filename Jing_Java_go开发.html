@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>靖守彦 · Java/Go 架构师</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #2c2c2c;
+  background: #f5f5f5;
+  padding: 30px 20px;
+}
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 50px 55px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+/* header */
+.name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+.subtitle {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 2px;
+}
+.contact {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 28px;
+}
+.contact span {
+  display: inline-block;
+  margin-right: 18px;
+}
+
+/* sections */
+.section {
+  margin-bottom: 24px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #2c6b9e;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+/* summary */
+.summary {
+  font-size: 13.5px;
+  line-height: 1.8;
+  text-align: justify;
+  color: #333;
+}
+
+/* skill groups */
+.skill-group {
+  margin-bottom: 8px;
+}
+.skill-group-title {
+  font-weight: 600;
+  color: #2c6b9e;
+  display: inline;
+  font-size: 13.5px;
+}
+.skill-items {
+  display: inline;
+  font-size: 13.5px;
+  color: #444;
+}
+.skill-items .highlight {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* experience */
+.exp-header {
+  margin-bottom: 2px;
+}
+.exp-company {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.exp-role {
+  font-size: 13px;
+  color: #2c6b9e;
+  font-weight: 500;
+}
+.exp-meta {
+  font-size: 12.5px;
+  color: #999;
+  margin-bottom: 6px;
+}
+.exp-desc {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.project-name {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #1a1a1a;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+.project-sub {
+  font-weight: 500;
+  color: #2c6b9e;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 6px;
+}
+li {
+  font-size: 13px;
+  color: #444;
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 1px;
+}
+li::before {
+  content: "·";
+  position: absolute;
+  left: 3px;
+  color: #2c6b9e;
+  font-weight: 700;
+}
+
+/* open source */
+.oss-item {
+  margin-bottom: 10px;
+}
+.oss-name {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #1a1a1a;
+}
+.oss-link {
+  font-size: 12.5px;
+  color: #2c6b9e;
+}
+.oss-desc {
+  font-size: 13px;
+  color: #555;
+  text-align: justify;
+}
+
+/* print */
+@media print {
+  body { background: #fff; padding: 0; }
+  .page { box-shadow: none; padding: 40px 50px; }
+}
+@media (max-width: 600px) {
+  .page { padding: 25px 20px; }
+  .name { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="name">靖守彦</div>
+<div class="subtitle">Java / Go 架构师</div>
+<div class="contact">
+  <span>18 年经验</span>
+  <span>18552805073</span>
+  <span>jingshouyan@gmail.com</span>
+  <span>江苏南京</span>
+  <span>1985.08</span>
+  <span>河海大学 · 本科 · 自动化（2003 届）</span>
+  <span>github.com/jingshouyan</span>
+</div>
+
+<!-- 专业摘要 -->
+<div class="section">
+  <div class="section-title">专业摘要</div>
+  <div class="summary">
+    18 年后端开发经验，专注于 Java/Go 分布式系统基础架构方向。主导研发了基于 Dubbo + Thrift 扩展的企业级 RPC 框架，支撑千万级消息量的私有化部署 IM 系统。具备微服务治理、容器化迁移（裸机 → K8s）、DevOps 全链路搭建、国产数据库适配等落地经验。擅长基础组件设计与性能调优：消息服务重构 QPS 从 100+ 提升至 1000+，慢查询治理 p95 延时从 4000ms 降至 200ms。累计修复 CVE 安全漏洞 200+。积极探索 AI 编程实践，通过 Reasonix Code（DeepSeek）对话式开发完成完整小程序项目。
+  </div>
+</div>
+
+<!-- 核心技术栈 -->
+<div class="section">
+  <div class="section-title">核心技术栈</div>
+
+  <div class="skill-group">
+    <span class="skill-group-title">编程语言</span>
+    <span class="skill-items">
+      Java / Kotlin（精通）：JVM 内存模型、GC 调优、多线程并发、NIO/Netty
+      ｜ Go（熟练）：Goroutine/Channel、Gin、gorm、zorm、viper
+    </span>
+  </div>
+
+  <div class="skill-group">
+    <span class="skill-group-title">框架与中间件</span>
+    <span class="skill-items">
+      RPC：Dubbo、Thrift、自研 J-RPC 框架
+      ｜ 微服务：SpringCloud、自研微服务框架
+      ｜ ORM：MyBatis-Plus、JPA、Spring JDBC Template
+      ｜ 网络：Netty、NIO
+    </span>
+  </div>
+
+  <div class="skill-group">
+    <span class="skill-group-title">存储与搜索</span>
+    <span class="skill-items">
+      MySQL：SQL 优化、B+ Tree 索引、慢查询治理（<span class="highlight">p95 4000ms → 200ms</span>）
+      ｜ 国产数据库：达梦、金仓、神通
+      ｜ Redis：缓存设计、分布式锁、缓存+数据同步（<span class="highlight">QPS 100+ → 1000+</span>）
+      ｜ ElasticSearch：分词、搜索
+      ｜ Kafka：异步消息、削峰填谷
+    </span>
+  </div>
+
+  <div class="skill-group">
+    <span class="skill-group-title">DevOps &amp; 容器化</span>
+    <span class="skill-items">
+      Docker / K8s（裸机 → K8s 迁移）、GitLab CI、SonarQube、Harbor、Arthas
+    </span>
+  </div>
+
+  <div class="skill-group">
+    <span class="skill-group-title">治理与安全</span>
+    <span class="skill-items">
+      自研 Zookeeper 服务注册发现与配置中心、<span class="highlight">CVE 漏洞修复 200+</span>、Helm、日志分析、监控系统
+    </span>
+  </div>
+
+  <div class="skill-group">
+    <span class="skill-group-title">AI 编程</span>
+    <span class="skill-items">
+      Reasonix Code（DeepSeek）对话式编程完成完整项目交付
+      ｜ 驾考小程序 driver-exam-wx 从零到上线全流程
+    </span>
+  </div>
+</div>
+
+<!-- 工作经历 -->
+<div class="section">
+  <div class="section-title">工作经历</div>
+
+  <div class="exp-header">
+    <span class="exp-company">北信源软件股份有限公司</span>
+    <span class="exp-role">· 基础服务组组长 / 架构师</span>
+  </div>
+  <div class="exp-meta">2015.12 — 2026.06 · 管理团队 10+ 人</div>
+  <div class="exp-desc">负责公司基础架构层的设计与维护，涵盖 IM 系统、微服务框架、RPC 框架、配置中心、CI/CD 流水线等。</div>
+
+  <div class="project-sub">核心项目：信源密信（企业级私有化部署 IM）</div>
+
+  <div class="project-name">架构设计与治理</div>
+  <ul>
+    <li>将 IM 系统拆分为用户/登录/在线/群组/好友/ID/消息/云推送等 10+ 微服务</li>
+    <li>服务内聚合并与重构，服务数量减少 <strong>30%</strong>，调用链显著缩短</li>
+    <li>消息服务重构（缓存+数据同步），<strong>QPS 从 100+ 提升至 1000+</strong></li>
+    <li>主导部署模式从裸机迁移至 K8s</li>
+  </ul>
+
+  <div class="project-name">自研基础设施</div>
+  <ul>
+    <li>RPC 框架：基于 Dubbo + Thrift 扩展，统一服务间调用协议，Spring Boot Starter 集成、Zipkin 追踪、数据脱敏</li>
+    <li>配置中心：基于 Zookeeper 的服务注册发现与配置中心，支持动态配置下发</li>
+    <li>JDBC 增强工具：基于 Spring JDBC Template 自研 CRUD 增强框架（开源 J-JDBC）</li>
+  </ul>
+
+  <div class="project-name">DevOps &amp; 工程效率</div>
+  <ul>
+    <li>GitLab CI 全链路：K8s Runner + Minio + SonarQube + Harbor</li>
+    <li>Java 依赖管理，<strong>CVE 漏洞修复 200+</strong>，构建工具升级</li>
+  </ul>
+
+  <div class="project-name">Go 工具链开发</div>
+  <ul>
+    <li>日志分析工具（Go）：海量日志实时检索与告警</li>
+    <li>cve-analyzer（Go CLI）：自动解析 OWASP 依赖检查报告</li>
+    <li>nvd-data-mirror（Go 服务）：CVE 数据国内镜像</li>
+  </ul>
+
+  <div class="project-name">开放平台 &amp; AI 集成</div>
+  <ul>
+    <li>设计开放平台 API，对接 OA/CRM 等第三方系统</li>
+    <li>对接 AI 平台（Cli、OpenClaw）</li>
+  </ul>
+
+  <div style="margin-top:16px;">
+    <div class="exp-header">
+      <span class="exp-company">钱袋宝软件股份有限公司</span>
+      <span class="exp-role">· Java 研发工程师</span>
+    </div>
+    <div class="exp-meta">2014.05 — 2015.12</div>
+    <div class="project-sub">项目：钱生钱小额贷款系统</div>
+    <ul>
+      <li>核心功能开发、性能优化</li>
+      <li>对接多家银行接口</li>
+      <li>设计开发对账系统</li>
+      <li>设计开发管理平台</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:16px;">
+    <div class="exp-header">
+      <span class="exp-company">淮海中联水泥有限公司</span>
+      <span class="exp-role">· 信息中心 IT 技术工程师</span>
+    </div>
+    <div class="exp-meta">2008.08 — 2014.05</div>
+    <ul>
+      <li>ERP 系统维护与故障排查</li>
+      <li>内部需求分析与供应商协调</li>
+      <li>IT 基础设施维护（网络、服务器、数据库）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 个人开源项目 -->
+<div class="section">
+  <div class="section-title">个人开源项目</div>
+
+  <div class="oss-item">
+    <div><span class="oss-name">J-RPC</span> — 基于 Thrift 的 JSON 格式 RPC 框架</div>
+    <div class="oss-link">github.com/jingshouyan/j-rpc · 2018.08 — 2021.06</div>
+    <div class="oss-desc">轻量级 RPC 框架，Zookeeper 注册发现。Spring Boot Starter 零配置接入，支持 Zipkin 追踪、数据脱敏、自动生成 API 文档、JMeter 压测。</div>
+  </div>
+
+  <div class="oss-item">
+    <div><span class="oss-name">J-JDBC</span> — Spring JDBC Template CRUD 增强</div>
+    <div class="oss-link">github.com/jingshouyan/j-jdbc · 2018.04 — 2021.04</div>
+    <div class="oss-desc">基于注解的 CRUD 增强，支持动态 SQL、多数据库方言（MySQL、达梦、金仓等）、字段加密存储。</div>
+  </div>
+
+  <div class="oss-item">
+    <div><span class="oss-name">cve-analyzer</span> — CVE 漏洞报告分析工具（Go）</div>
+    <div class="oss-link">github.com/jingshouyan/cve-analyzer · 2021.05 — 2025.04</div>
+    <div class="oss-desc">解析 OWASP dependency-check 输出的 CSV 漏洞报告，生成结构化摘要。</div>
+  </div>
+
+  <div class="oss-item">
+    <div><span class="oss-name">nvd-data-mirror</span> — NVD 数据镜像服务（Go）</div>
+    <div class="oss-link">github.com/jingshouyan/nvd-data-mirror · 2021.04 — 2024.03</div>
+    <div class="oss-desc">为 dependency-check-maven 提供 CVE 和 RetireJS 国内镜像。</div>
+  </div>
+
+  <div class="oss-item">
+    <div><span class="oss-name">driver-exam-wx</span> — 驾考科目一/四 微信小程序</div>
+    <div class="oss-link">github.com/jingshouyan/driver-exam-wx · 2026.06</div>
+    <div class="oss-desc">刷题学习小程序，含顺序练习、模拟考试、错题本。全程 Reasonix Code（DeepSeek）AI 编程完成。</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
