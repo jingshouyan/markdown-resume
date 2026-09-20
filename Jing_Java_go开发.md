@@ -10,7 +10,7 @@ github.com/jingshouyan
 专业摘要
 --------
 
-18 年一线研发经验，专注 Java 微服务架构与基础组件方向，兼具 Go 服务与工具链工程实践。主导自研企业级 RPC 框架（Dubbo + Thrift 扩展）、公司微服务框架与 Zookeeper 配置中心，支撑千万级消息量的私有化部署 IM 系统（10+ 微服务），长期负责核心服务的架构设计、编码实现、性能调优与线上问题排查。代表成果：消息服务重构 QPS 从 100+ 提升至 1000+；慢查询治理 p95 从 4000ms 降至 200ms；累计修复 CVE 安全漏洞 200+。近年持续实践 AI 编程，通过 Reasonix Code（DeepSeek）对话式开发完成完整小程序项目并开源。
+18 年一线研发经验，专注 Java 微服务架构与基础组件方向，兼具 Go 生产服务与工具链工程实践。主导自研企业级 RPC 框架（Dubbo + Thrift 扩展）、公司微服务框架与 Zookeeper 配置中心，支撑单日 100w+ 消息量、最大客户 50w+ 用户的私有化部署 IM 系统（10+ 微服务），长期负责核心服务的架构设计、编码实现、性能调优与线上问题排查。代表成果：消息服务重构 QPS 从 100+ 提升至 1000+；慢查询治理 p95 从 4000ms 降至 200ms；累计修复 CVE 安全漏洞 200+。近年持续实践 AI 编程，通过 Reasonix Code（DeepSeek）对话式开发完成完整小程序项目并开源。
 
 ----
 
@@ -30,7 +30,8 @@ github.com/jingshouyan
 存储与搜索
   MySQL：SQL 优化、B+ Tree 索引、慢查询治理（p95 4000ms → 200ms）
   国产数据库：达梦、金仓、神通
-  Redis：缓存设计、分布式锁、缓存+数据同步（QPS 100+ → 1000+）
+  Redis：缓存设计、分布式锁
+  Caffeine：本地缓存（有状态服务，Kafka 异步刷新）
   ElasticSearch：分词、搜索
   Kafka：异步消息、削峰填谷
 
@@ -55,7 +56,8 @@ AI 编程
 
 项目背景
   面向企业的私有化部署 IM 系统，分布式微服务架构，支持高并发与大规模用户访问。
-  提供即时通讯、消息群发、消息存储、消息检索，以及开放平台 API（OA / CRM 等第三方集成）。
+  最大客户 50w+ 用户、单日消息量 100w+。提供即时通讯、消息群发、消息存储、消息检索，
+  以及开放平台 API（OA / CRM 等第三方集成）。
 
 技术栈
   Java / Spring Boot · 自研微服务框架 · 自研 RPC（Dubbo + Thrift 扩展）· Zookeeper · MySQL · Redis · K8s
@@ -63,18 +65,23 @@ AI 编程
 核心工作
 
   【1】消息服务重构 —— QPS 100+ → 1000+
-      引入缓存 + 数据同步技术重构消息服务，QPS 从 100+ 提升至 1000+（10 倍提升）。
+      有状态化改造 + 本地缓存 + 异步同步：
+      · 基于会话 ID 一致性哈希路由，同一会话固定路由到同一实例（有状态服务）
+      · Caffeine 缓存会话相关数据；监听 Kafka 源数据变更，异步更新本地缓存
+      · QPS 从 100+ 提升至 1000+（10 倍提升）
 
   【2】微服务治理 —— 服务数量 -30%
-      按业务边界拆分为用户、登录、在线、群组、好友、ID、消息、云推送等 10+ 独立微服务；
-      主导服务内聚合并与重构，服务数量减少 30%，调用链显著缩短，系统稳定性提升。
+      服务拆分：按业务边界拆分为用户、登录、在线、群组、好友、ID、消息、云推送等 10+ 独立微服务；
+      服务合并：消息 / 在线 / 会话 / 推送等服务内聚合并与重构，服务数量减少 30%，调用链显著缩短。
 
-  【3】性能优化 —— p95 4000ms → 200ms
-      定位核心服务慢查询与复杂查询问题并完成治理，p95 延时从 4000ms 降至 200ms。
+  【3】慢查询治理 —— p95 4000ms → 200ms
+      典型问题：索引未命中、for 循环内逐条查询（N+1）
+      定位手段：自研日志分析工具 + MySQL 慢查询日志 + Arthas
+      优化手段：补充索引、查询逻辑重写（循环内查询改批量查询），p95 从 4000ms 降至 200ms
 
   【4】自研 RPC 框架（Dubbo + Thrift 扩展）
-      统一公司服务间调用协议；Spring Boot Starter 一键接入；内置 Zipkin 调用链追踪、
-      请求/响应数据脱敏；负责架构设计、核心功能开发与性能优化。
+      统一公司服务间调用协议，50+ 服务接入；Spring Boot Starter 一键接入；
+      内置 Zipkin 调用链追踪、请求/响应数据脱敏；负责架构设计、核心功能开发与性能优化。
 
   【5】自研微服务框架与配置中心
       公司微服务框架的设计开发与维护；自研基于 Zookeeper 的服务注册发现与配置中心，
@@ -90,19 +97,23 @@ AI 编程
   【8】开放平台与 AI 集成
       设计开放平台 API，支持 OA / CRM 等第三方系统对接；接入 AI 能力平台（Cli、OpenClaw）。
 
-二、Go 服务与工具链
+二、Go 生产服务与工具链
 北信源软件股份有限公司 · 2021 — 2025
 
-  【1】日志分析工具（Go）
-      处理海量服务日志，支持实时检索与告警。
+  【1】生产服务 Go 重写
+      将好友推荐、网址解析等原 Java 服务重写为 Go 服务，资源占用显著降低。
 
-  【2】cve-analyzer（Go CLI）· github.com/jingshouyan/cve-analyzer
+  【2】日志分析工具（Go）
+      轻量级（内存占用小），直接分析本地日志文件；结果分片存储于多个 SQLite，定时清理；
+      为慢查询定位与线上问题排查提供日志检索能力。
+
+  【3】cve-analyzer（Go CLI）· github.com/jingshouyan/cve-analyzer
       解析 OWASP dependency-check 输出的 CSV 漏洞报告，生成 CSV + Markdown 结构化摘要；
       支持建议字段自定义维护、多次生成保留历史记录。
 
-  【3】nvd-data-mirror（Go 服务）· github.com/jingshouyan/nvd-data-mirror
-      为 dependency-check-maven 提供 CVE 与 RetireJS 数据镜像，减少对 NVD 官方源的依赖，
-      提升数据获取的稳定性与速度。
+  【4】nvd-data-mirror（Go 服务）· github.com/jingshouyan/nvd-data-mirror
+      为 dependency-check-maven 提供 CVE 与 RetireJS 数据镜像，定时增量抓取 NVD API，
+      减少对官方源的依赖，提升数据获取的稳定性与速度。
 
 三、钱生钱小额贷款系统（Java）
 钱袋宝软件股份有限公司 · 2014.05 — 2015.12
@@ -147,7 +158,7 @@ driver-exam-wx — 驾考科目一/四 微信小程序
 github.com/jingshouyan/driver-exam-wx · 2026.06
 刷题学习小程序，含顺序练习、模拟考试、错题本。全程 Reasonix Code（DeepSeek）AI 编程完成。
 
-（cve-analyzer、nvd-data-mirror 见上方「项目经验 · Go 服务与工具链」）
+（cve-analyzer、nvd-data-mirror 见上方「项目经验 · Go 生产服务与工具链」）
 
 ----
 

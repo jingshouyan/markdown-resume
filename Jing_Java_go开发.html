@@ -113,11 +113,23 @@ body {
   text-align: justify;
 }
 
+.proj-label {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+.proj-text {
+  font-size: 13px;
+  color: #444;
+  text-align: justify;
+}
 .project-name {
   font-weight: 600;
   font-size: 13.5px;
   color: #1a1a1a;
-  margin-top: 10px;
+  margin-top: 12px;
   margin-bottom: 4px;
 }
 .project-sub {
@@ -145,6 +157,7 @@ li::before {
   color: #2c6b9e;
   font-weight: 700;
 }
+.job { margin-bottom: 14px; }
 
 /* open source */
 .oss-item {
@@ -163,6 +176,10 @@ li::before {
   font-size: 13px;
   color: #555;
   text-align: justify;
+}
+.oss-note {
+  font-size: 12.5px;
+  color: #999;
 }
 
 /* print */
@@ -195,7 +212,7 @@ li::before {
 <div class="section">
   <div class="section-title">专业摘要</div>
   <div class="summary">
-    18 年后端开发经验，专注于 Java/Go 分布式系统基础架构方向。主导研发了基于 Dubbo + Thrift 扩展的企业级 RPC 框架，支撑千万级消息量的私有化部署 IM 系统。具备微服务治理、容器化迁移（裸机 → K8s）、DevOps 全链路搭建、国产数据库适配等落地经验。擅长基础组件设计与性能调优：消息服务重构 QPS 从 100+ 提升至 1000+，慢查询治理 p95 延时从 4000ms 降至 200ms。累计修复 CVE 安全漏洞 200+。积极探索 AI 编程实践，通过 Reasonix Code（DeepSeek）对话式开发完成完整小程序项目。
+    18 年一线研发经验，专注 Java 微服务架构与基础组件方向，兼具 Go 生产服务与工具链工程实践。主导自研企业级 RPC 框架（Dubbo + Thrift 扩展）、公司微服务框架与 Zookeeper 配置中心，支撑单日 100w+ 消息量、最大客户 50w+ 用户的私有化部署 IM 系统（10+ 微服务），长期负责核心服务的架构设计、编码实现、性能调优与线上问题排查。代表成果：消息服务重构 QPS 从 100+ 提升至 1000+；慢查询治理 p95 从 4000ms 降至 200ms；累计修复 CVE 安全漏洞 200+。近年持续实践 AI 编程，通过 Reasonix Code（DeepSeek）对话式开发完成完整小程序项目并开源。
   </div>
 </div>
 
@@ -226,7 +243,8 @@ li::before {
     <span class="skill-items">
       MySQL：SQL 优化、B+ Tree 索引、慢查询治理（<span class="highlight">p95 4000ms → 200ms</span>）
       ｜ 国产数据库：达梦、金仓、神通
-      ｜ Redis：缓存设计、分布式锁、缓存+数据同步（<span class="highlight">QPS 100+ → 1000+</span>）
+      ｜ Redis：缓存设计、分布式锁
+      ｜ Caffeine：本地缓存（有状态服务，Kafka 异步刷新）
       ｜ ElasticSearch：分词、搜索
       ｜ Kafka：异步消息、削峰填谷
     </span>
@@ -255,79 +273,136 @@ li::before {
   </div>
 </div>
 
+<!-- 项目经验 -->
+<div class="section">
+  <div class="section-title">项目经验</div>
+
+  <!-- 信源密信 -->
+  <div class="exp-header">
+    <span class="exp-company">一、信源密信 —— 企业级私有化部署 IM（Java 微服务）</span>
+  </div>
+  <div class="exp-meta">北信源软件股份有限公司 · 2015.12 — 2026.06 · 基础服务组组长 / 架构师 · 管理团队 10+ 人</div>
+
+  <div class="proj-label">项目背景</div>
+  <div class="proj-text">面向企业的私有化部署 IM 系统，分布式微服务架构，支持高并发与大规模用户访问。最大客户 50w+ 用户、单日消息量 100w+。提供即时通讯、消息群发、消息存储、消息检索，以及开放平台 API（OA / CRM 等第三方集成）。</div>
+
+  <div class="proj-label">技术栈</div>
+  <div class="proj-text">Java / Spring Boot · 自研微服务框架 · 自研 RPC（Dubbo + Thrift 扩展）· Zookeeper · MySQL · Redis · Caffeine · K8s</div>
+
+  <div class="project-name">【1】消息服务重构 —— QPS 100+ → 1000+</div>
+  <ul>
+    <li>基于会话 ID 一致性哈希路由，同一会话固定路由到同一实例（有状态服务）</li>
+    <li>Caffeine 缓存会话相关数据；监听 Kafka 源数据变更，异步更新本地缓存</li>
+    <li>QPS 从 100+ 提升至 1000+（<strong>10 倍提升</strong>）</li>
+  </ul>
+
+  <div class="project-name">【2】微服务治理 —— 服务数量 -30%</div>
+  <ul>
+    <li>服务拆分：按业务边界拆分为用户、登录、在线、群组、好友、ID、消息、云推送等 10+ 独立微服务</li>
+    <li>服务合并：消息 / 在线 / 会话 / 推送等服务内聚合并与重构，服务数量减少 <strong>30%</strong>，调用链显著缩短</li>
+  </ul>
+
+  <div class="project-name">【3】慢查询治理 —— p95 4000ms → 200ms</div>
+  <ul>
+    <li>典型问题：索引未命中、for 循环内逐条查询（N+1）</li>
+    <li>定位手段：自研日志分析工具 + MySQL 慢查询日志 + Arthas</li>
+    <li>优化手段：补充索引、查询逻辑重写（循环内查询改批量查询），p95 从 4000ms 降至 <strong>200ms</strong></li>
+  </ul>
+
+  <div class="project-name">【4】自研 RPC 框架（Dubbo + Thrift 扩展）</div>
+  <ul>
+    <li>统一公司服务间调用协议，<strong>50+ 服务接入</strong>；Spring Boot Starter 一键接入</li>
+    <li>内置 Zipkin 调用链追踪、请求/响应数据脱敏；负责架构设计、核心功能开发与性能优化</li>
+  </ul>
+
+  <div class="project-name">【5】自研微服务框架与配置中心</div>
+  <ul>
+    <li>公司微服务框架的设计开发与维护</li>
+    <li>自研基于 Zookeeper 的服务注册发现与配置中心，支持动态配置下发，设计三方组件动态接入方案</li>
+  </ul>
+
+  <div class="project-name">【6】部署升级与 CI/CD</div>
+  <ul>
+    <li>服务部署从裸机迁移至 K8s，提升弹性伸缩与运维效率</li>
+    <li>搭建 GitLab CI 全链路流水线：K8s Runner + Minio 缓存 + SonarQube 代码质量检查 + Harbor 镜像仓库</li>
+  </ul>
+
+  <div class="project-name">【7】安全治理</div>
+  <ul>
+    <li>Java 第三方依赖管理，累计修复 CVE 安全漏洞 <strong>200+</strong>，完成依赖版本与构建工具升级</li>
+  </ul>
+
+  <div class="project-name">【8】开放平台与 AI 集成</div>
+  <ul>
+    <li>设计开放平台 API，支持 OA / CRM 等第三方系统对接</li>
+    <li>接入 AI 能力平台（Cli、OpenClaw）</li>
+  </ul>
+
+  <!-- Go -->
+  <div class="exp-header" style="margin-top:22px;">
+    <span class="exp-company">二、Go 生产服务与工具链</span>
+  </div>
+  <div class="exp-meta">北信源软件股份有限公司 · 2021 — 2025</div>
+
+  <div class="project-name">【1】生产服务 Go 重写</div>
+  <ul>
+    <li>将好友推荐、网址解析等原 Java 服务重写为 Go 服务，资源占用显著降低</li>
+  </ul>
+
+  <div class="project-name">【2】日志分析工具（Go）</div>
+  <ul>
+    <li>轻量级（内存占用小），直接分析本地日志文件</li>
+    <li>结果分片存储于多个 SQLite，定时清理；为慢查询定位与线上问题排查提供日志检索能力</li>
+  </ul>
+
+  <div class="project-name">【3】cve-analyzer（Go CLI）</div>
+  <ul>
+    <li>解析 OWASP dependency-check 输出的 CSV 漏洞报告，生成 CSV + Markdown 结构化摘要</li>
+    <li>支持建议字段自定义维护、多次生成保留历史记录</li>
+    <li>github.com/jingshouyan/cve-analyzer</li>
+  </ul>
+
+  <div class="project-name">【4】nvd-data-mirror（Go 服务）</div>
+  <ul>
+    <li>为 dependency-check-maven 提供 CVE 与 RetireJS 数据镜像，定时增量抓取 NVD API</li>
+    <li>减少对官方源的依赖，提升数据获取的稳定性与速度</li>
+    <li>github.com/jingshouyan/nvd-data-mirror</li>
+  </ul>
+
+  <!-- 钱生钱 -->
+  <div class="exp-header" style="margin-top:22px;">
+    <span class="exp-company">三、钱生钱小额贷款系统（Java）</span>
+  </div>
+  <div class="exp-meta">钱袋宝软件股份有限公司 · 2014.05 — 2015.12</div>
+  <div class="proj-text">小额贷款全流程系统（申请 / 审批 / 放款 / 还款）+ 对账系统 + 管理平台。</div>
+  <ul>
+    <li>核心功能开发、性能优化与故障排查</li>
+    <li>对接多家银行系统接口，保障数据准确传输与处理</li>
+    <li>设计开发对账系统，保障数据准确性与一致性</li>
+    <li>设计开发管理平台，支撑运营与风控团队</li>
+  </ul>
+</div>
+
 <!-- 工作经历 -->
 <div class="section">
   <div class="section-title">工作经历</div>
 
-  <div class="exp-header">
-    <span class="exp-company">北信源软件股份有限公司</span>
-    <span class="exp-role">· 基础服务组组长 / 架构师</span>
+  <div class="job">
+    <div class="exp-header"><span class="exp-company">北信源软件股份有限公司</span><span class="exp-role"> · 基础服务组组长 / 架构师</span></div>
+    <div class="exp-meta">2015.12 — 2026.06 · 管理团队 10+ 人</div>
+    <div class="exp-desc">负责公司基础架构层的设计与维护：IM 系统、微服务框架、RPC 框架、配置中心、CI/CD 流水线。</div>
   </div>
-  <div class="exp-meta">2015.12 — 2026.06 · 管理团队 10+ 人</div>
-  <div class="exp-desc">负责公司基础架构层的设计与维护，涵盖 IM 系统、微服务框架、RPC 框架、配置中心、CI/CD 流水线等。</div>
 
-  <div class="project-sub">核心项目：信源密信（企业级私有化部署 IM）</div>
-
-  <div class="project-name">架构设计与治理</div>
-  <ul>
-    <li>将 IM 系统拆分为用户/登录/在线/群组/好友/ID/消息/云推送等 10+ 微服务</li>
-    <li>服务内聚合并与重构，服务数量减少 <strong>30%</strong>，调用链显著缩短</li>
-    <li>消息服务重构（缓存+数据同步），<strong>QPS 从 100+ 提升至 1000+</strong></li>
-    <li>主导部署模式从裸机迁移至 K8s</li>
-  </ul>
-
-  <div class="project-name">自研基础设施</div>
-  <ul>
-    <li>RPC 框架：基于 Dubbo + Thrift 扩展，统一服务间调用协议，Spring Boot Starter 集成、Zipkin 追踪、数据脱敏</li>
-    <li>配置中心：基于 Zookeeper 的服务注册发现与配置中心，支持动态配置下发</li>
-    <li>JDBC 增强工具：基于 Spring JDBC Template 自研 CRUD 增强框架（开源 J-JDBC）</li>
-  </ul>
-
-  <div class="project-name">DevOps &amp; 工程效率</div>
-  <ul>
-    <li>GitLab CI 全链路：K8s Runner + Minio + SonarQube + Harbor</li>
-    <li>Java 依赖管理，<strong>CVE 漏洞修复 200+</strong>，构建工具升级</li>
-  </ul>
-
-  <div class="project-name">Go 工具链开发</div>
-  <ul>
-    <li>日志分析工具（Go）：海量日志实时检索与告警</li>
-    <li>cve-analyzer（Go CLI）：自动解析 OWASP 依赖检查报告</li>
-    <li>nvd-data-mirror（Go 服务）：CVE 数据国内镜像</li>
-  </ul>
-
-  <div class="project-name">开放平台 &amp; AI 集成</div>
-  <ul>
-    <li>设计开放平台 API，对接 OA/CRM 等第三方系统</li>
-    <li>对接 AI 平台（Cli、OpenClaw）</li>
-  </ul>
-
-  <div style="margin-top:16px;">
-    <div class="exp-header">
-      <span class="exp-company">钱袋宝软件股份有限公司</span>
-      <span class="exp-role">· Java 研发工程师</span>
-    </div>
+  <div class="job">
+    <div class="exp-header"><span class="exp-company">钱袋宝软件股份有限公司</span><span class="exp-role"> · Java 研发工程师</span></div>
     <div class="exp-meta">2014.05 — 2015.12</div>
-    <div class="project-sub">项目：钱生钱小额贷款系统</div>
-    <ul>
-      <li>核心功能开发、性能优化</li>
-      <li>对接多家银行接口</li>
-      <li>设计开发对账系统</li>
-      <li>设计开发管理平台</li>
-    </ul>
+    <div class="exp-desc">小额贷款系统、银行接口对接、对账系统、管理平台。</div>
   </div>
 
-  <div style="margin-top:16px;">
-    <div class="exp-header">
-      <span class="exp-company">淮海中联水泥有限公司</span>
-      <span class="exp-role">· 信息中心 IT 技术工程师</span>
-    </div>
+  <div class="job">
+    <div class="exp-header"><span class="exp-company">淮海中联水泥有限公司</span><span class="exp-role"> · 信息中心 IT 技术工程师</span></div>
     <div class="exp-meta">2008.08 — 2014.05</div>
-    <ul>
-      <li>ERP 系统维护与故障排查</li>
-      <li>内部需求分析与供应商协调</li>
-      <li>IT 基础设施维护（网络、服务器、数据库）</li>
-    </ul>
+    <div class="exp-desc">ERP 系统维护、内部需求分析与供应商协调、IT 基础设施维护（网络、服务器、数据库）。</div>
   </div>
 </div>
 
@@ -348,22 +423,12 @@ li::before {
   </div>
 
   <div class="oss-item">
-    <div><span class="oss-name">cve-analyzer</span> — CVE 漏洞报告分析工具（Go）</div>
-    <div class="oss-link">github.com/jingshouyan/cve-analyzer · 2021.05 — 2025.04</div>
-    <div class="oss-desc">解析 OWASP dependency-check 输出的 CSV 漏洞报告，生成结构化摘要。</div>
-  </div>
-
-  <div class="oss-item">
-    <div><span class="oss-name">nvd-data-mirror</span> — NVD 数据镜像服务（Go）</div>
-    <div class="oss-link">github.com/jingshouyan/nvd-data-mirror · 2021.04 — 2024.03</div>
-    <div class="oss-desc">为 dependency-check-maven 提供 CVE 和 RetireJS 国内镜像。</div>
-  </div>
-
-  <div class="oss-item">
     <div><span class="oss-name">driver-exam-wx</span> — 驾考科目一/四 微信小程序</div>
     <div class="oss-link">github.com/jingshouyan/driver-exam-wx · 2026.06</div>
     <div class="oss-desc">刷题学习小程序，含顺序练习、模拟考试、错题本。全程 Reasonix Code（DeepSeek）AI 编程完成。</div>
   </div>
+
+  <div class="oss-note">（cve-analyzer、nvd-data-mirror 见上方「项目经验 · Go 生产服务与工具链」）</div>
 </div>
 
 </div>
